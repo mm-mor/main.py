@@ -17,12 +17,10 @@ x, y, z = zip(*points)
 ax = plt.axes(projection='3d')
 ax.scatter3D(x, y, z)
 plt.title('points clouds in 3D', fontsize=14)
-plt.tight_layout
+plt.tight_layout()
 plt.xlabel('x', fontsize=12)
 plt.ylabel('y', fontsize=12)
 ax.set_zlabel('z', fontsize=12)
-
-
 
 clusterer = KMeans(n_clusters=3)
 clusterer.fit(points)
@@ -37,14 +35,12 @@ red_z = z_pred == 0
 blue_z = z_pred == 1
 cyan_z = z_pred == 2
 
-#plt.figure()
+plt.figure()
 ax = plt.axes(projection='3d')
-ax.scatter3D(points[red, 0], points[red, 1], points[cyan_z, 2], c='red')
-ax.scatter3D(points[blue, 0], points[blue, 1], points[cyan_z, 2], c='blue')
+ax.scatter3D(points[red, 0], points[red, 1], points[red_z, 2], c='red')
+ax.scatter3D(points[blue, 0], points[blue, 1], points[blue_z, 2], c='blue')
 ax.scatter3D(points[cyan, 0], points[cyan, 1], points[cyan_z, 2], c='cyan')
-# plt.scatter(points[red, 0], points[red, 1], c='red')
-# plt.scatter(points[blue, 0], points[blue, 1], c='blue')
-# plt.scatter(points[cyan, 0], points[cyan, 1], c='cyan')
+
 
 plt.show()
 
